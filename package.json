@@ -1,0 +1,33 @@
+{
+  "name": "kirimcepat",
+  "version": "1.0.0",
+  "description": "Startup : KirimCepat\r Anggota : 1. Wisnu Pradana Purna Yasser (102062400067)\r           2. Nabil Sabilah Aflah (102062400083)\r           3. Anata Budi Ayuni (102062400041)\r Stack   : Tech Lead / Backend : Wisnu\r           DevOps Engineer     : Nabil\r           Container Engineer  : Anata\r           QA Engineer         : Wisnu\r Fitur   : - Pembuatan pengiriman dengan nomor resi otomatis\r           - Perhitungan ongkir\r           - Pembaruan status oleh kurir\r           - Halaman lacak resi publik dengan riwayat status",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest",
+    "start": "node src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZendayGT/KirimCepat.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/ZendayGT/KirimCepat/issues"
+  },
+  "homepage": "https://github.com/ZendayGT/KirimCepat#readme",
+  "dependencies": {
+    "express": "^5.3.0",
+    "mysql2": "^3.24.6"
+  },
+  "devDependencies": {
+    "jest": "^30.5.2",
+    "supertest": "^7.3.2"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  }
+}
