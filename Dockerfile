@@ -13,5 +13,6 @@ COPY package*.json ./
 RUN npm ci --omit=dev
 COPY src ./src
 COPY migrations ./migrations
+COPY public ./public
 EXPOSE 8000
 CMD ["node", "src/server.js"]
