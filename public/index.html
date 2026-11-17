@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KirimCepat</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📦</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap bar">
+    <a class="brand" href="#lacak"><span class="logo" aria-hidden="true"></span>KirimCepat</a>
+    <nav class="tabs" role="tablist" aria-label="Menu utama">
+      <button role="tab" data-tab="lacak" aria-selected="true">Lacak resi</button>
+      <button role="tab" data-tab="kirim" aria-selected="false">Kirim paket</button>
+      <button role="tab" data-tab="kurir" aria-selected="false">Kurir</button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <!-- LACAK -->
+  <section id="lacak" class="panel" role="tabpanel">
+    <h1>Di mana paket Anda?</h1>
+    <p class="lead">Masukkan nomor resi untuk melihat perjalanan paket di Jawa Timur.</p>
+    <form id="form-lacak" class="inline">
+      <label class="sr" for="in-resi">Nomor resi</label>
+      <input id="in-resi" placeholder="KC20261117000001" autocomplete="off" required>
+      <button class="btn" type="submit">Lacak</button>
+    </form>
+    <div id="hasil-lacak" aria-live="polite"></div>
+  </section>
+
+  <!-- KIRIM -->
+  <section id="kirim" class="panel" role="tabpanel" hidden>
+    <h1>Kirim paket</h1>
+    <p class="lead">Isi data paket. Ongkir dihitung dari berat atau ukuran, mana yang lebih besar.</p>
+    <div class="grid2">
+      <form id="form-kirim" class="card stack">
+        <div class="row2">
+          <label>Pengirim<input name="pengirim" required></label>
+          <label>Penerima<input name="penerima" required></label>
+        </div>
+        <label>Alamat tujuan<textarea name="alamat_tujuan" rows="2" required></textarea></label>
+        <label>Zona
+          <select name="zona" required>
+            <option value="dekat">Dekat (dalam kota)</option>
+            <option value="sedang">Sedang (antarkota terdekat)</option>
+            <option value="jauh">Jauh (lintas wilayah)</option>
+          </select>
+        </label>
+        <label>Berat (kg)<input name="berat" type="number" min="0.1" step="0.1" required></label>
+        <fieldset>
+          <legend>Ukuran (cm)</legend>
+          <div class="row3">
+            <label>Panjang<input name="p" type="number" min="0" step="1" value="0"></label>
+            <label>Lebar<input name="l" type="number" min="0" step="1" value="0"></label>
+            <label>Tinggi<input name="t" type="number" min="0" step="1" value="0"></label>
+          </div>
+        </fieldset>
+        <div class="actions">
+          <button class="btn ghost" type="button" id="btn-hitung">Hitung ongkir</button>
+          <button class="btn" type="submit">Buat pengiriman</button>
+        </div>
+      </form>
+      <aside class="card quote" aria-live="polite">
+        <p class="muted">Ongkir</p>
+        <p class="price" id="out-ongkir">Rp0</p>
+        <p class="muted" id="out-detail">Isi data lalu pilih Hitung ongkir.</p>
+        <div id="out-resi"></div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- KURIR -->
+  <section id="kurir" class="panel" role="tabpanel" hidden>
+    <h1>Perbarui status</h1>
+    <p class="lead">Status hanya bisa maju satu langkah dari status saat ini.</p>
+    <form id="form-kurir" class="card stack narrow">
+      <label>Nomor resi<input name="resi" required autocomplete="off"></label>
+      <label>Status baru
+        <select name="status" required>
+          <option>DIJEMPUT</option><option>TRANSIT</option><option>DIANTAR</option><option>DITERIMA</option>
+        </select>
+      </label>
+      <label>Catatan (opsional)<input name="catatan" placeholder="Contoh: tiba di gudang Surabaya"></label>
+      <button class="btn" type="submit">Simpan status</button>
+      <p id="out-kurir" class="note" aria-live="polite"></p>
+    </form>
+  </section>
+</main>
+
+<footer class="wrap foot">KirimCepat · Ekspedisi antarkota Jawa Timur</footer>
+<script src="app.js"></script>
+</body>
+</html>
