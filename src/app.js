@@ -4,6 +4,9 @@ const db = require('./db');
 const app = express();
 app.use(express.json());
 
+const path = require('path');
+app.use(express.static(path.join(__dirname, '..', 'public')));
+
 app.get('/health', async (req, res) => {
   try {
     await db.ping();
