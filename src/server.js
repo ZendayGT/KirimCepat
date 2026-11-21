@@ -8,6 +8,6 @@ migrate()
     app.listen(PORT, () => console.log(`KirimCepat berjalan di port ${PORT}`));
   })
   .catch((err) => {
-    console.error('Migrasi gagal:', err.message);
+    console.error('Migrasi gagal:', err.code || err.errors?.[0]?.code || err.message, err);
     process.exit(1);
   });
