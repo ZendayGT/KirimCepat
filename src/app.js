@@ -1,10 +1,10 @@
+const path = require('path');
 const express = require('express');
 const db = require('./db');
+const routes = require('./routes');
 
 const app = express();
 app.use(express.json());
-
-const path = require('path');
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
 app.get('/health', async (req, res) => {
@@ -15,5 +15,7 @@ app.get('/health', async (req, res) => {
     res.status(503).json({ status: 'error', db: 'down' });
   }
 });
+
+app.use('/api', routes);
 
 module.exports = app;
