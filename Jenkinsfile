@@ -14,12 +14,9 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                checkout scm
                 script {
-                    env.TAG = bat(
-                        script: '@git rev-parse --short HEAD',
-                        returnStdout: true
-                    ).trim()
+                    def scmVars = checkout scm
+                    env.TAG = scmVars.GIT_COMMIT.take(7)
                 }
             }
         }
